@@ -2,8 +2,9 @@
 # Created by deserts at 1/12/17
 
 from combinators import *
+import sys
 
-#
+# ！给定语法规则和句子，判别该句子是否为该文法的语言，若是则给出AST
 # 规定语法规则表示如下：
 # S -> E;
 # E -> LI(T, VT('+'));
@@ -17,20 +18,6 @@ from combinators import *
 # e.g.上述第二条规则等价于 E -> E+T | T
 # 其他限制要求：首条规则的非终结符必须为S，
 #              规则满足"自顶向下"顺序。
-
-
-g = '''
-S -> E;
-E -> LI(T, VT('+'));
-T -> LI(F, VT('*'));
-F -> VT('i') | VT('n')
-'''
-
-g1 = '''
-S -> E;
-E -> (T + VT('i')) | (T + VT('j'));
-T -> VT('k')
-'''
 
 
 def grammer_process(g):
@@ -60,11 +47,17 @@ def parse(script, lang):
         return None
 
 if __name__ == '__main__':
-    g_ = grammer_process(g1)
-    print "语法规则如下: \n" + g
+    if len(sys.argv) < 2:
+        sys.stderr.write('Usage: general_parser grammer_file senten sentence\n')
+        sys.exit(1)
+    filename = sys.argv[1]
+    text = open(filename).read()
+    g_ = grammer_process(text)
+    print "语法规则如下: \n" + text
+    sentence = sys.argv[2]
     parsed = None
     try:
-        parsed = parse(g_, 'kjo')
+        parsed = parse(g_, sentence)
     except:
         print "规则错误"
     if parsed:

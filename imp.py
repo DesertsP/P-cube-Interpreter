@@ -4,6 +4,7 @@ import sys
 from imp_parser import *
 from imp_lexer import *
 
+
 def usage():
     sys.stderr.write('Usage: imp filename [-m verbose | less]\n')
     sys.exit(1)
