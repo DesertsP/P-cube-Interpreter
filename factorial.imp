@@ -1,0 +1,11 @@
+    foo = 5;
+    p = 1;
+    n = 1000;
+    def factorial(n):
+        while n > 0 do
+          p = p * n;
+          n = n - 1
+        end
+    end;
+    x = factorial(foo);
+    print p

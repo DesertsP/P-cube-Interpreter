@@ -1,0 +1,9 @@
+    list = [1, 2, 3, 4, 5];
+    def sum_of_list(list):
+        sum = 0;
+        for i in list do
+            sum = sum + i
+        end;
+        return sum
+    end;
+    print sum_of_list(list)
