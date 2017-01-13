@@ -24,15 +24,7 @@ F -> VT('i') | VT('n')
 
 ### 语言解释器
 
-语法规则结合了Python和Pascal，语法分析生成语法树，直接计算其节点，实现了函数、流程控制、列表、输出等简单功能。具体请看以下代码示例。
-
-感谢以下几位博主所做的工作：
-
-https://jayconrod.com/tags/imp
-
-http://www.cnblogs.com/Ninputer/archive/2011/06/26/2090645.html
-
-http://www.cnblogs.com/huxi/archive/2011/06/18/2084316.html
+语法规则结合了Python和Pascal，语法分析生成语法树，直接计算其节点，实现了函数、流程控制、列表、输出等简单功能。具体请看下面的代码示例。
 
 以下几个用例均通过测试。
 
@@ -68,3 +60,27 @@ end;
 x = factorial(foo);
 print p
 ```
+文件说明：
+
+```
+├── README.md
+├── combinators.py		组合子库
+├── factorial.imp		测试用例，阶乘
+├── fib.imp				测试用例，斐波那契数列
+├── general_parser.py	通用语法分析器
+├── grammer				通用语法分析器测试用文法规则
+├── hello.imp			测试用例，列表（数组）值累加
+├── imp.py				解释器入口
+├── imp_ast.py			抽象语法树及解释执行
+├── imp_lexer.py		词法分析
+├── imp_parser.py		语法分析
+├── imp_test.py			一些单元测试内容
+```
+
+感谢以下几位博主所做的工作：
+
+https://jayconrod.com/tags/imp
+
+http://www.cnblogs.com/Ninputer/archive/2011/06/26/2090645.html
+
+http://www.cnblogs.com/huxi/archive/2011/06/18/2084316.html
