@@ -48,7 +48,7 @@ def parse(script, lang):
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
-        sys.stderr.write('Usage: general_parser grammer_file senten sentence\n')
+        sys.stderr.write('Usage: general_parser grammer_file sentence\n')
         sys.exit(1)
     filename = sys.argv[1]
     text = open(filename).read()
@@ -56,10 +56,12 @@ if __name__ == '__main__':
     print "语法规则如下: \n" + text
     sentence = sys.argv[2]
     parsed = None
+    # print g_
     try:
         parsed = parse(g_, sentence)
     except:
         print "规则错误"
+        sys.exit(1)
     if parsed:
         print "解析成功：" + str(parsed)
     else:
