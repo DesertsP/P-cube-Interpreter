@@ -26,10 +26,27 @@ F -> VT('i') | VT('n')
 
 语法规则结合了Python和Pascal，语法分析生成语法树，直接计算其节点，实现了函数、流程控制、列表、输出等简单功能。具体请看下面的代码示例。
 
-以下几个用例均通过测试。
+测试:
 
 ```
-list = [1, 2, 3*5, 4, 5];
+> python imp.py factorial.imp 
+120
+
+> python imp.py fib.imp
+13
+
+> python imp.py hello.imp -m verbose 
+15
+Final global variable values:
+list: [1, 2, 3, 4, 5]
+sum_of_list: <function sum_of_list('list')>
+
+```
+代码示例：
+
+```
+# 求和
+list = [1, 2, 3, 4, 5];
 def sum_of_list(list):
     sum = 0;
     for i in list do
@@ -37,8 +54,9 @@ def sum_of_list(list):
     end;
     return sum
 end;
-print sum_of_list(list);
+print sum_of_list(list)
 
+# 斐波那契
 def fib(n):
     if n <= 2 then
         return 1
@@ -46,8 +64,9 @@ def fib(n):
         return fib(n-1) + fib(n-2)
     end
 end;
-print fib(1+3);
+print fib(7)
 
+# 阶乘
 foo = 5;
 p = 1;
 n = 1000;
@@ -60,20 +79,21 @@ end;
 x = factorial(foo);
 print p
 ```
+
 文件说明：
 
 ```
 ├── README.md
 ├── combinators.py		组合子库
-├── factorial.imp		测试用例，阶乘
+├── factorial.imp			测试用例，阶乘
 ├── fib.imp				测试用例，斐波那契数列
-├── general_parser.py	通用语法分析器
+├── general_parser.py		通用语法分析器
 ├── grammer				通用语法分析器测试用文法规则
-├── hello.imp			测试用例，列表（数组）值累加
+├── hello.imp				测试用例，列表（数组）值累加
 ├── imp.py				解释器入口
 ├── imp_ast.py			抽象语法树及解释执行
-├── imp_lexer.py		词法分析
-├── imp_parser.py		语法分析
+├── imp_lexer.py			词法分析
+├── imp_parser.py			语法分析
 ├── imp_test.py			一些单元测试内容
 ```
 
