@@ -22,7 +22,7 @@ import sys
 
 def grammer_process(g):
     gramm = g.strip().replace('->', '=')
-    gramm = [i.strip() for i in gramm.split(';')]
+    gramm = [i.strip() for i in gramm.split('\n')]
     script = ''
     for i in gramm:
         script = i + '\n' + script
@@ -39,7 +39,8 @@ def LI(sigle, separator):
 
 
 def parse(script, lang):
-    exec script
+    compiled = compile(script, 'grammer.pyc', 'exec')
+    exec(compiled)
     parsed = Phrase(S)([(c, c) for c in lang], 0)
     if parsed:
         return parsed.value
@@ -56,7 +57,7 @@ if __name__ == '__main__':
     print "语法规则如下: \n" + text
     sentence = sys.argv[2]
     parsed = None
-    # print g_
+    parsed = parse(g_, sentence)
     try:
         parsed = parse(g_, sentence)
     except:
